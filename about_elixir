@@ -1,0 +1,110 @@
+# creating modules that organize methods into namespaces
+# you can nest modules
+# you can create aliases
+# you can extend them with "use"
+# they can store constants and have attributes
+
+# defmodule Main do
+#   def sum(a, b) do
+#     a + b
+#   end
+
+#   def sum_list([head | tail], accumulator) do
+#     sum_list(tail, head + accumulator)
+#   end
+
+#   def sum_list([], accumulator) do
+#     accumulator
+#   end
+# end
+
+# IO.puts(Main.sum(1,2))
+
+# -------
+
+# tuple - linked list
+# tuple = {1,2,3}
+
+# -------
+
+# list - quick read
+# list = [1,2,3]
+
+# -------
+
+# map - key-value store
+# map = %{:symbol => 2}
+# value = map[:symbol]
+
+# -------
+
+# struct - map with default values and compile-time checks
+# defmodule User do
+#   defstruct name: "Jasiu"
+# end
+# %User{} # it cannot be used in module that defines it
+
+# -------
+
+# binding values - used commonly with pattern matching
+# Use the pin operator ^ when you want to pattern match against a variable's existing value rather than rebinding the variable.
+
+# x = 1
+# ^x = 1
+
+# -------
+
+# case - pattern matching
+# x = 1
+# case x do
+#   1 -> IO.puts("match")
+#   _ -> IO.puts("no match")
+# end
+
+# -------
+
+# cond - run logic for first truthy
+# cond do
+#   2 + 2 == 5 ->
+#     IO.puts("This will not be true")
+#   2 * 2 == 3 ->
+#     IO.puts("Nor this")
+#   1 + 1 == 2 ->
+#     IO.puts("But this will")
+# end
+
+# -------
+
+# if statement
+# if 1 == 2 do
+#   IO.puts("truthy")
+# else
+#   IO.puts("falsy")
+# end
+
+# -------
+
+# processes - concurrency model
+# parent_pid = self()
+# pid = spawn(fn -> send(parent_pid, {:hello, "message from child process"}) end)
+# receive do
+#   {:hello, msg} -> IO.puts("match #{msg}")
+#   {:world, _msg} -> IO.puts("won't match")
+# after
+#   1_000 -> "timeout"
+# end
+# IO.puts(Process.alive?(pid))
+
+# -------
+
+# comprehensions
+# for n <- [1, 2, 3, 4], do: n * n
+
+# -------
+
+# error handling
+# try do
+#   raise "oops"
+# rescue
+#   e in RuntimeError -> e
+# end
